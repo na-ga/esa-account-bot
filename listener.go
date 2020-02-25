@@ -44,8 +44,11 @@ func (s *MessageListener) handleMessageEvent(ev *slack.MessageEvent) error {
 	if !strings.HasPrefix(ev.Msg.Text, WrapUserNameInLink(s.botID)) {
 		return nil
 	}
-	cmd := strings.Split(strings.TrimSpace(ev.Msg.Text), " ")[1]
-	switch cmd {
+	cmd := strings.Split(strings.TrimSpace(ev.Msg.Text), " ")
+	if len(cmd) < 2 {
+		return s.handleHelp(ev)
+	}
+	switch cmd[1] {
 	case "admins":
 		return s.handleAdmins(ev)
 	case "invite":
