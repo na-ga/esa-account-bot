@@ -258,7 +258,7 @@ func (s *MessageListener) handleCleanupAccount(ev *slack.MessageEvent) error {
 	}
 	targets := make([]string, 0, len(res.Members))
 	screenNames := make([]string, 0, len(res.Members))
-	expireTime := time.Now().AddDate(0, -targetMonth, 0)
+	expireTime := time.Now().In(timeZone).AddDate(0, -targetMonth, 0)
 	for _, member := range res.Members {
 		t, err := member.LastAccessedTime()
 		if err != nil {

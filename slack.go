@@ -67,5 +67,5 @@ func RemoveMailtoMeta(text string) string {
 
 //
 func DateTimePrefix() string {
-	return time.Now().Format("01/02 15:04") + " - "
+	return time.Now().In(timeZone).Format("01/02 15:04") + " - "
 }

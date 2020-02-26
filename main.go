@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/kelseyhightower/envconfig"
 	"github.com/nlopes/slack"
@@ -28,6 +29,10 @@ type (
 
 const (
 	envPrefix = ""
+)
+
+var (
+	timeZone = time.FixedZone("JST", 9*60*60)
 )
 
 func main() {
