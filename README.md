@@ -1,5 +1,8 @@
 # esa-account-bot
 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/na-ga/esa-account-bot/blob/master/LICENSE)
+
 esa.io のアカウントを管理する Slack Bot です
 
 ## Setting
@@ -30,4 +33,6 @@ esa.io のアカウントを管理する Slack Bot です
 
 ![usage](/usage.png)
 
+## LICENSE
 
+esa-account-bot is released under the MIT license. See LICENSE file for details.
