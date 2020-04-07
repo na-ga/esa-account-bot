@@ -44,7 +44,7 @@ func (s *MessageListener) handleMessageEvent(ev *slack.MessageEvent) error {
 	if !strings.HasPrefix(ev.Msg.Text, WrapUserNameInLink(s.botID)) {
 		return nil
 	}
-	cmd := strings.Split(strings.TrimSpace(ev.Msg.Text), " ")
+	cmd := strings.Fields(ev.Msg.Text)
 	if len(cmd) < 2 {
 		return s.handleHelp(ev)
 	}
@@ -116,7 +116,7 @@ func (s *MessageListener) handleInviteAccount(ev *slack.MessageEvent) error {
 			Email: user.Profile.Email,
 		},
 	}
-	options := strings.Split(strings.TrimSpace(ev.Msg.Text), " ")[2:]
+	options := strings.Fields(ev.Msg.Text)[2:]
 	if len(options) == 1 && options[0] != "" {
 		callback.Value = RemoveMailtoMeta(options[0])
 	}
@@ -181,7 +181,7 @@ func (s *MessageListener) handleDeleteAccount(ev *slack.MessageEvent) error {
 			Email: user.Profile.Email,
 		},
 	}
-	options := strings.Split(strings.TrimSpace(ev.Msg.Text), " ")[2:]
+	options := strings.Fields(ev.Msg.Text)[2:]
 	if len(options) == 1 && options[0] != "" {
 		callback.Value = options[0]
 	}
@@ -234,7 +234,7 @@ func (s *MessageListener) handleCleanupAccount(ev *slack.MessageEvent) error {
 	}
 
 	var targetMonth int
-	options := strings.Split(strings.TrimSpace(ev.Msg.Text), " ")[2:]
+	options := strings.Fields(ev.Msg.Text)[2:]
 	if len(options) == 1 && options[0] != "" {
 		targetMonth, err = strconv.Atoi(options[0])
 		if err != nil || targetMonth < s.accountExpireMonth {
